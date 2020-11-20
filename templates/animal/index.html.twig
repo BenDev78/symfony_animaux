@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnimalController!{% endblock %}
+
+{% block titreH1 %}Liste des livres{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        {% for animal in animaux %}
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="{{ asset('assets/' ~ animal.image) }}" alt="">
+                </div>
+                <div class="col-auto">
+                    <h4>{{ animal.nom }}</h4>
+                    <p>{{ animal.description }}</p>
+                    <p>{{ animal.poids }} Kg</p>
+                    {% if(animal.dangereux) %}
+                        <p class="text-danger font-weight-bold">Dangereux</p>
+                    {% else %}
+                        <p class="text-success font-weight-bold">Pas dangereux</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
