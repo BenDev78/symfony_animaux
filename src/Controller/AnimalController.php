@@ -26,10 +26,14 @@ class AnimalController extends AbstractController
     }
 
     /**
-     * @Route ("/animal", name="afficher_animal")
+     * @Route ("/animal/{id}", name="afficher_animal")
+     * @param Animal $animal
+     * @return Response
      */
-    public function animal()
+    public function animal(Animal $animal)
     {
-        return $this->render('animal/animal.html.twig');
+        return $this->render('animal/animal.html.twig', [
+            'animal' => $animal
+        ]);
     }
 }
