@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContinentController!{% endblock %}
+
+{% block titreH1 %}Liste des continents{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row my-3 justify-content-center">
+            {% for continent in continents %}
+
+                    <div class="col-auto">
+                        <a href="{{ path('continent', {'id' : continent.id}) }}" class="btn btn-success">{{ continent.libelle|capitalize }}</a>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

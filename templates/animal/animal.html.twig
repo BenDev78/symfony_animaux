@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Animal - {{ animal.nom|upper }}{% endblock %}
+{% block title %}Animal - {{ animal.nom|capitalize }}{% endblock %}
 
 {% block titreH1 %}Affichage de l'animal{% endblock %}
 
@@ -18,10 +18,15 @@
                         <p>{{ animal.description }}</p>
                         <p>{{ animal.poids }} Kg</p>
                         {% if(animal.dangereux) %}
-                            <p class="text-danger font-weight-bold">Dangereux</p>
+                            <sapn class="text-danger font-weight-bold mr-2">Dangereux</sapn>
+                            <a href="{{ path('famille', {'id': animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle|capitalize }}</a> <br/>
                         {% else %}
-                            <p class="text-success font-weight-bold">Pas dangereux</p>
+                            <span class="text-success font-weight-bold mr-2">Pas dangereux</span>
+                            <a href="{{ path('famille', {'id' : animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle|capitalize }}</a> <br/>
                         {% endif %}
+                        {% for continent in animal.continents %}
+                            <a href="{{ path('continent', {'id' : continent.id}) }}" class="btn btn-warning mt-2">{{ continent.libelle }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personnes{% endblock %}
+
+{% block titreH1 %}Liste des personnes{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        {% for personne in personnes %}
+            <a href="{{ path('personne', {'id' : personne.id}) }}"><h2 class="text-success text-center col-md-2 mb-4">{{ personne.nom }}</h2></a>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

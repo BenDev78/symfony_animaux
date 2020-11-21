@@ -7,12 +7,13 @@
 {% block body %}
 
     <div class="container">
-
+        
         {% for animal in animaux %}
-            <div class="row">
+            <div class="row my-3">
                 <div class="col-md-3">
                     <img src="{{ asset('assets/' ~ animal.image) }}" alt="">
                 </div>
+
                 <div class="col-auto">
                     <a href="{{ path('afficher_animal', {'id' : animal.id}) }}"><h4>{{ animal.nom }}</h4></a>
                     <p>{{ animal.description }}</p>
@@ -22,7 +23,14 @@
                     {% else %}
                         <p class="text-success font-weight-bold">Pas dangereux</p>
                     {% endif %}
+                    <div>
+                        <a href="{{ path('famille', {'id' : animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle|capitalize }}</a>
+                    </div>
+                    {% for continent in animal.continents %}
+                        <a href="" class="btn btn-warning mt-2">{{ continent.libelle }}</a>
+                    {% endfor %}
                 </div>
+
             </div>
         {% endfor %}
 

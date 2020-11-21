@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block titreH1 %}{% endblock %}
+
+{% block body %}
+
+    <h2 class="text-center text-success">{{ personne.nom }}</h2>
+
+    <div class="container">
+        <h4 class="text-center mt-4">Liste des animaux possédés :</h4>
+        <div class="row">
+            {% for dispose in personne.disposes %}
+                <div class="card col-md-3 mx-auto mt-4">
+                    <a href="{{ path('afficher_animal', {'id' : dispose.animal.id}) }}"><h2 class="card-title text-center">{{ dispose.animal.nom }}</h2></a>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <img src="{{ asset('assets/' ~ dispose.animal.image) }}" alt="">
+                            </div>
+                            <div class="col-auto align-items-center mt-4">
+                                <p>Animaux possédés : {{ dispose.nb }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+

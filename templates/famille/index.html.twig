@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les familles{% endblock %}
+
+{% block titreH1 %}Liste des familles{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+    <div class="row justify-content-center text-center">
+        {% for famille in familles %}
+            <div class="card col-md-3 m-2">
+                <a href="{{ path('famille', {'id' : famille.id}) }}"><h3 class="card-body">{{ famille.libelle|capitalize }}</h3></a>
+                <div class="card-body">
+                    <p>{{ famille.description|capitalize }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    </div>
+
+{% endblock %}
